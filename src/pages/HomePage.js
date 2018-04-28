@@ -7,6 +7,10 @@ class HomePage extends React.Component {
 
     state = { user: '' };
 
+    componentWillMount(){
+        console.log(actions);
+    }
+
     changeUser = (name) => {
         this.props.login({ name });
     };
