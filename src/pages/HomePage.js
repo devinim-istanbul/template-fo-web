@@ -20,7 +20,7 @@ class HomePage extends React.Component {
     };
 
     loadAsyncUser = () => {
-        const user = localStorage.getItem('@ServeMe:user') ;
+        const user = localStorage.getItem('@Template:user') ;
         console.log(user);
     };
 
