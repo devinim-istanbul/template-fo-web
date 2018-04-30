@@ -6,18 +6,20 @@ import ReduxThunk from 'redux-thunk';
 import reducers from './redux/reducers';
 import HomePage from './pages/HomePage';
 
-import { configPlatformItems } from './config/core';
+import { initialize } from './config/core';
 
 const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+
+const Storage = {
+    setItem: (key, value) => Promise.resolve().then(() => { localStorage.setItem(key, value); }),
+    getItem: key => Promise.resolve().then(() => localStorage.getItem(key))
+};
 
 export default class App extends React.Component {
 
     constructor(){
         super();
-        configPlatformItems({
-            setItem: (key, value) => Promise.resolve().then(() => { localStorage.setItem(key, value); }),
-            getItem: key => Promise.resolve().then(() => localStorage.getItem(key))
-        })
+        initialize(Storage);
     }
 
     render() {
